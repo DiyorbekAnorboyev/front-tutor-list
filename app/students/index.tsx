@@ -31,8 +31,6 @@ export default function Students() {
     }
   }, []);
 
-  console.log(data);
-
   return (
     <div className="relative h-full">
       <SearchHeaders />

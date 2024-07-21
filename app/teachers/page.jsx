@@ -1,10 +1,26 @@
-import Login from "../login/page";
-import Home from "../page";
+import { useEffect } from "react"
+import axios from "../components/service/api";
 
 const Teachers = () => {
+
+  const [data, setdata] = useState([]);
+
+  useEffect(() => {
+    try {
+      const response = axios
+        .get("/Student")
+        .then((e) => setdata(e.data))
+        .catch((err) => console.log(err));
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+
   return (
     <>
-      <Home components={<Login/>}/>
+    <SearchHeaders />
+    <Tables dataBody={data} />
     </>
   );
 };
