@@ -3,10 +3,13 @@ import Modal from "../modal";
 
 type Props = {
   dataHead: string[];
+  modalInput: string[];
 };
 
-const SearchHeaders: React.FC<Props> = ({ dataHead }) => {
-  const data: string[] = ["F.I.O"];
+const SearchHeaders: React.FC<Props> = ({ dataHead, modalInput }) => {
+  if (dataHead === undefined) {
+    dataHead = ["F.I.O"];
+  }
 
   const [modal, setModal] = useState(false);
 
@@ -17,30 +20,18 @@ const SearchHeaders: React.FC<Props> = ({ dataHead }) => {
     return a(false);
   };
 
-  const dataInput: any = ["Ism", "Familya", "Guruh nomi", "So'm"];
-
   return (
     <div className="flex justify-between m-1">
       <div className="flex gap-3">
-        {dataHead
-          ? dataHead.map((e) => (
-              <>
-                <input
-                  type="text"
-                  className="border rounded-md p-1"
-                  placeholder={e}
-                />
-              </>
-            ))
-          : data.map((e) => (
-              <>
-                <input
-                  type="text"
-                  className="border rounded-md p-1"
-                  placeholder={e}
-                />
-              </>
-            ))}
+        {dataHead.map((e) => (
+          <>
+            <input
+              type="text"
+              className="border rounded-md p-1"
+              placeholder={e}
+            />
+          </>
+        ))}
       </div>
 
       <div className="w-auto flex justify-between gap-3">
@@ -59,7 +50,7 @@ const SearchHeaders: React.FC<Props> = ({ dataHead }) => {
       <Modal
         onWindow={modal}
         closeWindow={() => offModal(setModal)}
-        dataInput={dataInput}
+        modalInput={modalInput}
       />
     </div>
   );

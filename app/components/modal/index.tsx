@@ -4,10 +4,10 @@ import axios from "../service/api";
 type Props = {
   onWindow: boolean;
   closeWindow: any;
-  dataInput: any;
+  modalInput: any;
 };
 
-export default function Modal({ onWindow, closeWindow, dataInput }: Props) {
+export default function Modal({ onWindow, closeWindow, modalInput }: Props) {
   const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>("");
   const [groupName, setGroupName] = useState<string>("");
@@ -66,8 +66,8 @@ export default function Modal({ onWindow, closeWindow, dataInput }: Props) {
         }`}
       >
         <div className="grid grid-cols-2 gap-4">
-          {/* {dataInput.length > 0
-            ? dataInput.map((e: any, idx: any) => (
+          {/* {modalInput.length > 0
+            ? modalInput.map((e: any, idx: any) => (
                 <div key={idx}>
                   <label className=" text-sm font-medium leading-6 ">{e}</label>
                   <div>

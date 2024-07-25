@@ -1,12 +1,10 @@
-import Login from "../login/page";
+import Groups from "./index";
 import Home from "../page";
 
-const Teachers = () => {
+export default function GroupR() {
   return (
     <>
-      <Home components={<Login/>}/>
+      <Home components={<Groups />} />
     </>
   );
-};
-
-export default Teachers
+}

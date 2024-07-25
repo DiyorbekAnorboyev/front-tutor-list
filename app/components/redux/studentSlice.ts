@@ -4,14 +4,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export interface StudentState {
   studentData: [];
-  teacherData: [],
-  groupsData: [],
+  teacherData: [];
+  groupData: [];
 }
 
 const initialState: StudentState = {
   studentData: [],
   teacherData: [],
-  groupsData: [],
+  groupData: [],
 };
 
 export const studentSlice = createSlice({
@@ -25,7 +25,7 @@ export const studentSlice = createSlice({
       state.teacherData = action.payload;
     },
     getGroupsS: (state, action) => {
-      state.groupsData = action.payload;
+      state.groupData = action.payload;
     },
   },
 });

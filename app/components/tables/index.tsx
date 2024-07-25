@@ -10,7 +10,7 @@ type Props = {
 
 const Tables: React.FC<Props> = ({ dataHead, dataBody }) => {
   const data: string[] = ["Ism", "Familya", "So'm", "Guruh"];
-  const [groupData, setGroupData] = useState<string[]>([]);
+  // const [groupData, setGroupData] = useState<string[]>([]);
 
   const getGroups = async (id: any) => {
     try {
@@ -21,18 +21,16 @@ const Tables: React.FC<Props> = ({ dataHead, dataBody }) => {
     }
   };
 
-  // getGroups();
+  let groupData: string[] = [];
 
-  // console.log(dataBody);
-  // console.log(groupData);
+  function aa() {
+    dataBody.forEach((item: any) => {
+      groupData = Object.keys(item);
+    });
+  }
 
-  // function formatGroup(groupId: string) {
-  //   const data = groupData.find((e: any) => e._id === groupId);
-  //   return data.groupName;
-  // }
-
-  // const id: string = "6699083e1566d1db770b9e5d";
-  // console.log(getGroups(id));
+  console.log(aa());
+  console.log(groupData.map(e => e));
 
   return (
     <div className="w-full absolute h-table-scroll border no-scroll rounded-md overflow-y-scroll touch-pan-y   ">
@@ -57,15 +55,15 @@ const Tables: React.FC<Props> = ({ dataHead, dataBody }) => {
             ? dataBody.map((e: any, idx: any) => (
                 <>
                   <tr key={idx} className="border capitalize">
-                    <td className="border ">{e.firstName}</td>
+                    {/* <td className="border ">{e.firstName}</td>
                     <td className="border ">{e.lastName}</td>
                     <td className="border ">{sumToFormat(e.paid.sum)}</td>
-                    <td className="border ">{e.existGroup.groupId}</td>
-                    {/* <td className="border ">{e.existGroup.groupDate}</td> */}
+                    <td className="border ">{e.existGroup.groupId}</td> */}
+                    <td className="border ">{Object.keys(e)}</td>
                   </tr>
                 </>
               ))
-            : data.map((e) => (
+            : data.map((e) => ( 
                 <>
                   <td className="border ">{e}</td>
                 </>

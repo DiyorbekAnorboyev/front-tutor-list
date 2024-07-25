@@ -1,28 +1,10 @@
-import { useEffect } from "react"
-import axios from "../components/service/api";
+import Teachers from "./index";
+import Home from "../page";
 
-const Teachers = () => {
-
-  const [data, setdata] = useState([]);
-
-  useEffect(() => {
-    try {
-      const response = axios
-        .get("/Student")
-        .then((e) => setdata(e.data))
-        .catch((err) => console.log(err));
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
-
-
+export default function TeacherR() {
   return (
     <>
-    <SearchHeaders />
-    <Tables dataBody={data} />
+      <Home components={<Teachers />} />
     </>
   );
-};
-
-export default Teachers
+}
