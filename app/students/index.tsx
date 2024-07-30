@@ -16,7 +16,7 @@ export default function Students() {
   // };
 
   const dispatch = useDispatch();
-  const { studentData } = useSelector((state:any) => state.student);
+  const { studentData } = useSelector((state: any) => state.student);
 
   const getTeacherHandler = async () => {
     try {
@@ -28,17 +28,17 @@ export default function Students() {
     }
   };
 
-  console.log(studentData);
   useEffect(() => {
     getTeacherHandler();
   }, []);
 
   const modalInput: any = ["Ism", "Familya", "Guruh nomi", "So'm"];
+  const data: string[] = ["Ism", "Familya", "So'm", "Guruh"];
 
   return (
     <div className="relative h-full">
       <SearchHeaders modalInput={modalInput} />
-      <Tables dataBody={studentData} />
+      <Tables dataHead={data} dataBody={studentData} />
     </div>
   );
 }

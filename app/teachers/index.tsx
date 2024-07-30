@@ -6,7 +6,6 @@ import Tables from "../components/tables";
 import { useDispatch, useSelector } from "react-redux";
 import ProductService from "../components/redux/requests/index";
 import { getTeachersS } from "../components/redux/studentSlice";
-import { AnyAaaaRecord } from "dns";
 
 export default function Teachers() {
   const dispatch = useDispatch();
@@ -16,6 +15,8 @@ export default function Teachers() {
     try {
       const data = await ProductService.getTeachersReq();
       dispatch(getTeachersS(data));
+      console.log(data);
+      
     } catch (error) {
       console.log(error);
     }
@@ -25,11 +26,13 @@ export default function Teachers() {
     getTeacherHandler();
   }, []);
 
+  const data: string[] = ["Ism", "Familya"];
+
   return (
     <>
       <div className="relative h-full">
         <SearchHeaders />
-        <Tables dataBody={teacherData} />
+        <Tables dataHead={data} dataBody={teacherData} />
       </div>
     </>
   );

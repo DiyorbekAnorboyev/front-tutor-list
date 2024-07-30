@@ -3,10 +3,9 @@ import Modal from "../modal";
 
 type Props = {
   dataHead: string[];
-  modalInput: string[];
 };
 
-const SearchHeaders: React.FC<Props> = ({ dataHead, modalInput }) => {
+const SearchHeaders: React.FC<Props> = ({ dataHead }) => {
   if (dataHead === undefined) {
     dataHead = ["F.I.O"];
   }
@@ -47,11 +46,7 @@ const SearchHeaders: React.FC<Props> = ({ dataHead, modalInput }) => {
         </button>
       </div>
 
-      <Modal
-        onWindow={modal}
-        closeWindow={() => offModal(setModal)}
-        modalInput={modalInput}
-      />
+      <Modal onWindow={modal} closeWindow={() => offModal(setModal)} />
     </div>
   );
 };

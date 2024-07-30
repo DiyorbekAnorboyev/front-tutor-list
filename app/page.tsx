@@ -6,6 +6,9 @@ import { useState, ReactNode, useEffect } from "react";
 import Students from "./students/index";
 import { usePathname } from "next/navigation";
 import { useLocation } from "react-router-dom";
+import { toggleTheme } from "./components/redux/studentSlice";
+import { useDispatch, useSelector } from "react-redux";
+import "./i18n";
 
 interface LayoutProps {
   components: ReactNode;
@@ -13,6 +16,7 @@ interface LayoutProps {
 const Home: React.FC<LayoutProps> = ({ components }) => {
   const [darkMode, setDarkMode] = useState(false);
   const [theme, setTheme] = useState<any>();
+  // const { theme } = useSelector((state: any) => state.student);
 
   const onDark = async () => {
     setDarkMode(darkMode ? false : true);
@@ -24,21 +28,15 @@ const Home: React.FC<LayoutProps> = ({ components }) => {
     setTheme(app);
   }, [darkMode]);
 
+  // useEffect(() => {
+  //   theme
+  // }, []);
+
   let modeColor = theme === "false" ? "FFFFFF" : "000000";
 
   const router = usePathname();
+  const dispatch = useDispatch();
 
-  // const handleSubmit = async (e: FormEvent) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     const data = await axios.get("/Group");
-
-  //     console.log(data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
   return (
     <>
       <body
@@ -104,19 +102,6 @@ const Home: React.FC<LayoutProps> = ({ components }) => {
                 Groups
               </div>
             </Link>
-            <Link href="/settings">
-              <div
-                className={`flex-col h-auto text-center p-2 hover:bg-violet-500 cursor-pointer border-b border-gray-300 rounded-lg ${
-                  router === "/settings" ? "bg-violet-500" : ""
-                }`}
-              >
-                <img
-                  className=" mx-auto"
-                  src={`https://img.icons8.com/?size=35&id=364&format=png&color=${modeColor}`}
-                />
-                Settings
-              </div>
-            </Link>
             <Link href="/edits">
               <div
                 className={`flex-col h-auto text-center p-2 hover:bg-violet-500 cursor-pointer border-b border-gray-300 rounded-lg ${
@@ -141,6 +126,19 @@ const Home: React.FC<LayoutProps> = ({ components }) => {
                   src={`https://img.icons8.com/?size=35&id=6552&format=png&color=${modeColor}`}
                 />
                 Checks
+              </div>
+            </Link>
+            <Link href="/settings">
+              <div
+                className={`flex-col h-auto text-center p-2 hover:bg-violet-500 cursor-pointer border-b border-gray-300 rounded-lg ${
+                  router === "/settings" ? "bg-violet-500" : ""
+                }`}
+              >
+                <img
+                  className=" mx-auto"
+                  src={`https://img.icons8.com/?size=35&id=364&format=png&color=${modeColor}`}
+                />
+                Settings
               </div>
             </Link>
           </div>
